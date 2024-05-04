@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'com.github.spotbugs' version '4.6.0'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.api.user'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '21'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+spotbugs {
+    toolVersion = '4.8.4'
+    excludeFilter = file('exclude-spotbugs.xml')
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.12.0'
+
+}
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: [
+					'com/sentinel/api/user/setting/**',
+					'com/sentinel/api/user/infrastructure/**',
+					'com/sentinel/api/user/domain/**/model/**',
+					'com/sentinel/api/user/api/**/dto/**',
+					'com/sentinel/api/user/api/**/constants/**',
+					'com/sentinel/api/user/api/**/*Router.class',
+					'com/sentinel/api/user/api/ping/**',
+					'com/sentinel/api/user/*.class'
+			])
+		}))
+	}
+}
+
+jacoco {
+	toolVersion = "0.8.10"
+}
