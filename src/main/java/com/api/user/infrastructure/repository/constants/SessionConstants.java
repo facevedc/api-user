@@ -8,6 +8,4 @@ public class SessionConstants {
     public static final String SELECT_SESSION_BY_EMAIL_TOKEN =
             "SELECT * FROM session t WHERE t.token = '%s' AND t.email_user = '%s'";
 
-    public static final String SELECT_SESSION_BY_EMAIL =
-            "SELECT * FROM session t WHERE t.email = '%s'";
 }

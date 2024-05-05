@@ -2,6 +2,7 @@ package com.api.user.infrastructure.repository;
 
 import static com.api.user.infrastructure.repository.constants.UserConstants.SELECT_USER_WITH_PHONES_BY_EMAIL;
 
+import com.api.user.infrastructure.exceptions.InternalServerErrorException;
 import com.api.user.infrastructure.repository.entity.UserEntity;
 import com.api.user.infrastructure.repository.mapper.UserRepositoryMapper;
 import jakarta.persistence.EntityManager;
@@ -28,7 +29,7 @@ public class UserRepository {
         return Mono.fromCallable(() -> {
             entityManager.persist(user);
             return user;
-        });
+        }).onErrorResume(error -> Mono.error(new InternalServerErrorException(error.getMessage())));
     }
 
     @Transactional

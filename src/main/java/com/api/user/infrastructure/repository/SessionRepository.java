@@ -1,5 +1,6 @@
 package com.api.user.infrastructure.repository;
 
+import com.api.user.infrastructure.exceptions.InternalServerErrorException;
 import com.api.user.infrastructure.repository.entity.SessionEntity;
 import com.api.user.infrastructure.repository.mapper.SessionRepositoryMapper;
 import jakarta.persistence.EntityManager;
@@ -27,16 +28,12 @@ public class SessionRepository {
         return Mono.fromCallable(() -> {
            this.entityManager.persist(sessionEntity);
            return sessionEntity;
-        });
+        }).onErrorResume(error -> Mono.error(new InternalServerErrorException(error.getMessage())));
     }
 
     public Mono<SessionEntity> update(SessionEntity sessionEntity) {
-        return Mono.fromCallable(() -> this.entityManager.merge(sessionEntity));
-    }
-
-    public Mono<List<SessionEntity>> findByEmail(String email) {
-        String query = SELECT_SESSION_BY_EMAIL.formatted(email);
-        return find(query);
+        return Mono.fromCallable(() -> this.entityManager.merge(sessionEntity))
+                .onErrorResume(error -> Mono.error(new InternalServerErrorException(error.getMessage())));
     }
 
     public Mono<List<SessionEntity>> findByEmailToken(String email, String token) {
@@ -53,6 +50,8 @@ public class SessionRepository {
         return Mono.fromCallable(() -> {
            Query resultQuery = this.entityManager.createQuery(query, SessionEntity.class);
             return resultQuery.getResultList();
-        }).map(this.sessionRepositoryMapper::convertListInSessionEntity);
+        }).onErrorResume(error -> Mono.error(new InternalServerErrorException(error.getMessage())))
+          .map(this.sessionRepositoryMapper::convertListInSessionEntity);
+
     }
 }

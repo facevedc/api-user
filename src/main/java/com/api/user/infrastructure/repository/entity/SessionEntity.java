@@ -1,11 +1,15 @@
 package com.api.user.infrastructure.repository.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "session")
+@Data
+@NoArgsConstructor
 public class SessionEntity {
 
     @Id
@@ -21,11 +25,8 @@ public class SessionEntity {
     private String token;
 
     @Column(name = "creation", nullable = false)
-    private Timestamp creation;
+    private LocalDateTime creation;
 
-    @Column(name = "ttl", nullable = false)
-    private int ttl;
-
-    @Column(name = "status", nullable = false)
-    private String status;
+    @Column(name = "expiration", nullable = false)
+    private LocalDateTime expiration;
 }
