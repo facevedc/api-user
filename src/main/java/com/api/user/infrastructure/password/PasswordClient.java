@@ -1,17 +1,18 @@
 package com.api.user.infrastructure.password;
 
-import com.api.user.setting.PasswordConfig;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
 public class PasswordClient {
 
-    private PasswordConfig passwordConfig;
+    public String encrypt(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
 
-    public String encode(String password) {
-        return passwordConfig.passBuilder()
-                .encode(password);
+    public boolean check(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
     }
 }
