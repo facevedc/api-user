@@ -1,6 +1,5 @@
-package com.api.user.infrastructure.repository.session;
+package com.api.user.infrastructure.repository.entity;
 
-import com.api.user.infrastructure.repository.user.UserEntity;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;

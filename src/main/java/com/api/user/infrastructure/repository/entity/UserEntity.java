@@ -1,6 +1,6 @@
-package com.api.user.infrastructure.repository.user;
+package com.api.user.infrastructure.repository.entity;
 
-import com.api.user.infrastructure.repository.phone.PhoneEntity;
+import com.api.user.infrastructure.repository.entity.PhoneEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,6 +38,9 @@ public class UserEntity {
 
     @Column(name = "status", nullable = false)
     private String status;
+
+    @Column(name = "is_active", nullable = false)
+    private Integer isActive;
 
     @OneToMany(mappedBy = "userEmail", cascade = CascadeType.ALL)
     private List<PhoneEntity> phones;

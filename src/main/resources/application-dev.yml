@@ -22,3 +22,7 @@ spring:
 jwt:
   secret: 9f3Z7#hP$xYq6&4!sA@uD8gB
   expiration: 120000 # 2 minutos
+
+password:
+  hash:
+    size: 12

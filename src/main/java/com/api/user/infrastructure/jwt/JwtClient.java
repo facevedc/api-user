@@ -3,6 +3,7 @@ package com.api.user.infrastructure.jwt;
 import com.api.user.setting.JwtConfig;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,7 @@ public class JwtClient {
                 .setSubject(email)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, jwtConfig.getSecret())
+                .signWith(Keys.secretKeyFor(SignatureAlgorithm.PS512))
                 .compact();
     }
 }

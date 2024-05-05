@@ -26,9 +26,8 @@ CREATE TABLE IF NOT EXISTS session (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_email VARCHAR(255) NOT NULL,
     token VARCHAR(255) NOT NULL,
-    creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ttl INT NOT NULL,
-    status VARCHAR(20) NOT NULL,
+    creation TIMESTAMP NOT NULL,
+    expired TIMESTAMP NOT NULL,
     FOREIGN KEY (user_email) REFERENCES user(email)
 );
 

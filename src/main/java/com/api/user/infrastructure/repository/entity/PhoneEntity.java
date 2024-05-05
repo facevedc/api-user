@@ -1,6 +1,5 @@
-package com.api.user.infrastructure.repository.phone;
+package com.api.user.infrastructure.repository.entity;
 
-import com.api.user.infrastructure.repository.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
