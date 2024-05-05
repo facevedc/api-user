@@ -1,7 +1,7 @@
 package com.api.user.infrastructure.password;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -3,11 +3,12 @@ package com.api.user.infrastructure.repository.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "phones")
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class PhoneEntity {
 
     @Id

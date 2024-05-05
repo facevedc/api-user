@@ -1,16 +1,16 @@
 package com.api.user.infrastructure.repository.entity;
 
-import com.api.user.infrastructure.repository.entity.PhoneEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.sql.Timestamp;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -27,14 +27,11 @@ public class UserEntity {
 
     @Column(name = "creation", nullable = false, updatable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp creation;
+    private LocalDateTime creation;
 
     @Column(name = "update", nullable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-    private Timestamp update;
-
-    @Column(name = "last_login", nullable = false)
-    private Timestamp lastLogin;
+    private LocalDateTime update;
 
     @Column(name = "status", nullable = false)
     private String status;

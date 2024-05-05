@@ -63,14 +63,14 @@ jacocoTestReport {
 	afterEvaluate {
 		classDirectories.setFrom(files(classDirectories.files.collect {
 			fileTree(dir: it, exclude: [
-					'com/sentinel/api/user/setting/**',
-					'com/sentinel/api/user/infrastructure/**',
-					'com/sentinel/api/user/domain/**/model/**',
-					'com/sentinel/api/user/api/**/dto/**',
-					'com/sentinel/api/user/api/**/constants/**',
-					'com/sentinel/api/user/api/**/*Router.class',
-					'com/sentinel/api/user/api/ping/**',
-					'com/sentinel/api/user/*.class'
+					'com/api/user/setting/**',
+					'com/api/user/infrastructure/**',
+					'com/api/user/domain/**/model/**',
+					'com/api/user/api/**/dto/**',
+					'com/api/user/api/**/constants/**',
+					'com/api/user/api/**/*Router.class',
+					'com/api/user/api/ping/**',
+					'com/api/user/*.class'
 			])
 		}))
 	}

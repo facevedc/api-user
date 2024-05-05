@@ -4,14 +4,14 @@ spring:
   application:
     name: api-user
   datasource:
-    url: jdbc:h2:mem:register
+    name: register
     username: sa
     password: 123
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   h2:
     console:
       enabled: true
@@ -23,6 +23,3 @@ jwt:
   secret: 9f3Z7#hP$xYq6&4!sA@uD8gB
   expiration: 120000 # 2 minutos
 
-password:
-  hash:
-    size: 12
