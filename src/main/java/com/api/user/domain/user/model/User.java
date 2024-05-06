@@ -18,6 +18,6 @@ public class User {
     private LocalDateTime updated;
     private LocalDateTime lastLogin;
     private String token;
-    private boolean isActive;
+    private Boolean isActive;
     private String status;
 }

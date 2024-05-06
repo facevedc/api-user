@@ -37,7 +37,7 @@ public class UserMapper {
         userEntity.setName(user.getName());
         userEntity.setEmail(user.getEmail());
         userEntity.setPassword(user.getPassword());
-        userEntity.setIsActive(user.isActive() ? 1 : 0);
+        userEntity.setIsActive(user.getIsActive() ? 1 : 0);
         userEntity.setStatus(user.getStatus());
         userEntity.setPhones(convertListPhoneModelInEntity(user.getPhones()));
         return userEntity;

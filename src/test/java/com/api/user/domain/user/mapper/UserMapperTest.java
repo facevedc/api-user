@@ -71,7 +71,7 @@ class UserMapperTest {
         assertEquals(user.getName(), convertedUser.getName());
         assertEquals(user.getEmail(), convertedUser.getEmail());
         assertNull(convertedUser.getPassword());
-        assertEquals(isActive, convertedUser.isActive());
+        assertEquals(isActive, convertedUser.getIsActive());
         assertEquals(user.getStatus(), convertedUser.getStatus());
         assertEquals(user.getPhones().size(), convertedUser.getPhones().size());
         assertEquals(user.getPhones().getFirst().getNumber(), convertedUser.getPhones().getFirst().getNumber());

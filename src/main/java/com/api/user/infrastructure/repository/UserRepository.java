@@ -9,12 +9,14 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+@Log4j2
 @Repository
 @AllArgsConstructor
 public class UserRepository {
@@ -39,9 +41,9 @@ public class UserRepository {
 
     public Mono<List<UserEntity>> findByEmail(String email) {
         return Mono.fromCallable(() -> {
-            String query = SELECT_USER_WITH_PHONES_BY_EMAIL.formatted(email);
-            Query resultQuery = entityManager.createQuery(query, UserEntity.class);
-            return resultQuery.getResultList();
+                String query = SELECT_USER_WITH_PHONES_BY_EMAIL.formatted(email);
+                Query resultQuery = entityManager.createQuery(query);
+                return resultQuery.getResultList();
         }).map(this.userRepositoryMapper::convertListInUserEntity);
     }
 
