@@ -23,17 +23,23 @@ repositories {
     mavenCentral()
 }
 
-spotbugs {
-    toolVersion = '4.8.4'
-    excludeFilter = file('exclude-spotbugs.xml')
-}
-
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.2.4'
+
+    implementation 'org.hibernate:hibernate-core:6.4.4.Final'
+    implementation 'com.h2database:h2:2.2.224'
+
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    implementation 'org.mindrot:jbcrypt:0.4'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
+
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
 
@@ -52,14 +58,16 @@ jacocoTestReport {
 	afterEvaluate {
 		classDirectories.setFrom(files(classDirectories.files.collect {
 			fileTree(dir: it, exclude: [
-					'com/sentinel/api/user/setting/**',
-					'com/sentinel/api/user/infrastructure/**',
-					'com/sentinel/api/user/domain/**/model/**',
-					'com/sentinel/api/user/api/**/dto/**',
-					'com/sentinel/api/user/api/**/constants/**',
-					'com/sentinel/api/user/api/**/*Router.class',
-					'com/sentinel/api/user/api/ping/**',
-					'com/sentinel/api/user/*.class'
+					'com/api/user/setting/**',
+					'com/api/user/infrastructure/**',
+					'com/api/user/domain/**/model/**',
+                    'com/api/user/api/**/common/error/**',
+                    'com/api/user/api/**/common/exception/**',
+					'com/api/user/api/**/dto/**',
+					'com/api/user/api/**/constants/**',
+					'com/api/user/api/**/*Router.class',
+					'com/api/user/api/ping/**',
+					'com/api/user/*.class'
 			])
 		}))
 	}

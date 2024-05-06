@@ -1,0 +1,21 @@
+{
+	"id": "9d7e6b9e-ee71-45f2-863e-8d5e837f62c2",
+	"values": [
+		{
+			"key": "user",
+			"value": "http://localhost:8080/user",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "session",
+			"value": "http://localhost:8080/session",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-05-06T12:21:47.536Z",
+	"_postman_exported_using": "Postman/10.24.24"
+}

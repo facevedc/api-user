@@ -1,3 +1,33 @@
+server:
+  port: 8080
 spring:
   application:
     name: api-user
+  datasource:
+    url: jdbc:h2:mem:register
+    name: register
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: REACTIVE
+
+hibernate:
+  dialect: org.hibernate.dialect.H2Dialect
+  show_sql: false
+  hbm2ddl:
+    auto: update
+
+jwt:
+  secret: 9f3Z7#hP$xYq6&4!sA@uD8gB
+  expiration: 120000 # 2 minutos
+
