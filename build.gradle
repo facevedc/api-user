@@ -67,6 +67,7 @@ jacocoTestReport {
 					'com/api/user/infrastructure/**',
 					'com/api/user/domain/**/model/**',
                     'com/api/user/api/**/common/error/**',
+                    'com/api/user/api/**/common/exception/**',
 					'com/api/user/api/**/dto/**',
 					'com/api/user/api/**/constants/**',
 					'com/api/user/api/**/*Router.class',
