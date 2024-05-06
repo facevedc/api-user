@@ -23,11 +23,6 @@ repositories {
     mavenCentral()
 }
 
-spotbugs {
-    toolVersion = '4.8.4'
-    excludeFilter = file('exclude-spotbugs.xml')
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
