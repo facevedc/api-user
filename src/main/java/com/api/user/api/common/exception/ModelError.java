@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 
 @AllArgsConstructor
+@Data
 public class ModelError {
     private HttpStatus status;
     private String message;

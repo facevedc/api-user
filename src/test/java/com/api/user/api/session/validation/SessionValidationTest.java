@@ -55,7 +55,7 @@ class SessionValidationTest {
                 .expectError(BadRequestException.class)
                 .verify();
 
-        assertTrue(constraintViolations.contains(EMAIL_REQUIRED_MSG));
+        assertTrue(constraintViolations.contains(EMAIL_ERROR_MSG));
     }
 
     @Test
@@ -68,7 +68,7 @@ class SessionValidationTest {
                 .expectError(BadRequestException.class)
                 .verify();
 
-        assertTrue(constraintViolations.contains(EMAIL_REQUIRED_MSG));
+        assertTrue(constraintViolations.contains(EMAIL_ERROR_MSG));
     }
 
     @Test

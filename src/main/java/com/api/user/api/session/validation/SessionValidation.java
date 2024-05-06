@@ -27,7 +27,7 @@ public class SessionValidation {
 
         if (request.getEmail() == null && request.getToken() == null ||
                 request.getToken() != null && request.getEmail() == null) {
-            constraintViolations.add(EMAIL_REQUIRED_MSG);
+            constraintViolations.add(EMAIL_ERROR_MSG);
         }
 
         if (request.getEmail() != null && !request.getEmail().matches(EMAIL_REGEXP)) {

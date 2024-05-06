@@ -4,11 +4,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
+import java.util.List;
+
 @Builder
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Phone {
-    private Integer number;
-    private Integer city_code;
-    private Integer country_code;
+public class UserRequest {
+    private String name;
+    private String email;
+    private String password;
+    private List<Phone> phones;
 }
